@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comments App</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+  </head>
+  <body>
+    <header class="header">
+      
+      <div class="container-form">
+        <form id="input-form">
+          <label class="text-field__label" for="name">Name</label>
+          <input class="text-field__input"  type="text" name="name" id="name" placeholder="Enter your name..." required/>
+        <div class="text-field__message"></div>
+          <label class="text-field__label"for="comment">Comment</label>
+          <input
+          required
+          class="text-field__input"
+            placeholder="Your comment here ..."
+            name="comment"
+            id="comment"
+          ></input>
+          <div class="text-field__message"></div>
+          <button type="submit" id="formsub">Send</button>
+        </form>
+        
+      </div>
+    </header>
+    <section class="content container" id='content'></section>
+    <div class="pagination">
+      <div class="pagination-block">
+      <div class="pagination-buttons"> 
+        <button class="pageButton outline-none" id="button_prev">Prev</button>
+        <button class="pageButton" id ='button_show_more'>Show more</button>
+        <button class="pageButton outline-none" id="button_next">Next</button >
+          </div>
+        <span id="page_number" class="outline-none"></span>
+      </div>
+    </div>
+    <div class="container">
+      
+    </div>
+  </body>
+</html>
