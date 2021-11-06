@@ -1,6 +1,5 @@
 export default function validation() {
   const form = document.querySelector('#input-form');
-
   const checkValidity = (input) => {
     input.classList.remove('text-field__input_invalid');
     input.nextElementSibling.textContent = '';
@@ -28,10 +27,9 @@ export default function validation() {
   form.addEventListener('change', onCheckValidity);
   form.addEventListener('keydown', onCheckValidity);
   form.addEventListener('keyup', onCheckValidity);
-  checkValidityAll();
 
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('change', (e) => {
     e.preventDefault();
     checkValidityAll();
   });

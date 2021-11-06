@@ -2,13 +2,12 @@ import '../style/style.css';
 import Pagination from './pagination';
 import validation from './validation';
 
-
+let pagination = new Pagination();
 window.onload = function () {
-  let pagination = new Pagination();
   pagination.init()
   validation();
 }
-
+let form = document.querySelector('form');
 let myButton = document.getElementById('input-form');
 myButton.addEventListener('submit', function (ev) {
   ev.preventDefault();
@@ -18,10 +17,7 @@ myButton.addEventListener('submit', function (ev) {
     name: name,
     text: text
   }
-  ajaxSend(obj)
-    .then((res) => {
-      form.reset();
-    })
+  ajaxSend(obj);
 })
 const ajaxSend = (formData) => {
   fetch('https://jordan.ashton.fashion/api/goods/30/comments', {
@@ -29,7 +25,13 @@ const ajaxSend = (formData) => {
     headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(formData)
   })
-    .then(response => alert('Сообщение отправлено'))
+    .then(res => {
+      alert('Сообщение отправлено');
+      form.reset()
+      pagination.changePage()
+      validation();
+    })
+
     .catch(error => console.log('error', error))
 }
 createNewComment();

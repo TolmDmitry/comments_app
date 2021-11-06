@@ -8,11 +8,11 @@ class Pagination {
   current_page = 1;
   records_per_page = 5;
 
-  init = () => {
+  init = (page = 1) => {
     fetch(`https://jordan.ashton.fashion/api/goods/30/comments`).then(res => res.json()).then((data) => {
       this.numPages = Math.ceil(data.total / data.per_page);
       this.pageNumbers(this.numPages);
-      this.changePage(1);
+      this.changePage(page);
     })
 
     this.selectedPage();
@@ -57,7 +57,7 @@ class Pagination {
     content.appendChild(newsFragment);
   }
 
-  changePage = function (page) {
+  changePage = function (page = this.current_page) {
     fetch(`https://jordan.ashton.fashion/api/goods/30/comments?page=${page}`).then(res => res.json()).then((data) => {
       const content = document.querySelector('.content');
       content.replaceChildren();
@@ -82,7 +82,6 @@ class Pagination {
     }
   }
   showMore = () => {
-    console.log(this.current_page)
     fetch(`https://jordan.ashton.fashion/api/goods/30/comments?page=${this.current_page + 1}`).then(res => res.json()).then((data) => {
       const content = document.querySelector('.content');
       data.data.forEach(this.drawItem);
